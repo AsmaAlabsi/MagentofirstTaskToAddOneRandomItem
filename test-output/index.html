@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\USER\AppData\Local\Temp\testng-eclipse--1168157670\testng-customsuite.xml</span>
+                    <span>C:\Users\USER\AppData\Local\Temp\testng-eclipse-1158777005\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -105,6 +105,16 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="AddOneRandomItem" class="method navigator-link" hash-for-method="AddOneRandomItemToThecart">AddOneRandomItemToThecart</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="AddOneRandomItem" class="method navigator-link" hash-for-method="CheckOutProcess">CheckOutProcess</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="AddOneRandomItem" class="method navigator-link" hash-for-method="SignupProcess">SignupProcess</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -130,6 +140,24 @@
                   <a name="AddOneRandomItemToThecart">
                   </a> <!-- AddOneRandomItemToThecart -->
                   <span class="method-name">AddOneRandomItemToThecart</span>
+                  <em>
+(First Test)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="CheckOutProcess">
+                  </a> <!-- CheckOutProcess -->
+                  <span class="method-name">CheckOutProcess</span>
+                  <em>
+(Second Test)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SignupProcess">
+                  </a> <!-- SignupProcess -->
+                  <span class="method-name">SignupProcess</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -137,7 +165,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\USER\AppData\Local\Temp\testng-eclipse--1168157670\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\USER\AppData\Local\Temp\testng-eclipse-1158777005\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -186,11 +214,19 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'AddOneRandomItemToThecart')
+data.setCell(0, 1, 'CheckOutProcess')
 data.setCell(0, 2, 'AddOneRandomItem')
-data.setCell(0, 3, 22207);
+data.setCell(0, 3, 10548);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'AddOneRandomItemToThecart')
+data.setCell(1, 2, 'AddOneRandomItem')
+data.setCell(1, 3, 9152);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'SignupProcess')
+data.setCell(2, 2, 'AddOneRandomItem')
+data.setCell(2, 3, 2837);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -228,7 +264,15 @@ return data;
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">AddOneRandomItemToThecart</span>
-                <span class="method-start">26889 ms</span>
+                <span class="method-start">11034 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">CheckOutProcess</span>
+                <span class="method-start">20210 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SignupProcess</span>
+                <span class="method-start">30760 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
