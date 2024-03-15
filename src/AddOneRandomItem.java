@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ public class AddOneRandomItem {
 
 	WebDriver driver = new ChromeDriver();
 	String url = "https://magento.softwaretestingboard.com/";
+	String Password = "Asma5!@";
 
 	@BeforeTest
 	public void mySetup() {
@@ -25,10 +27,11 @@ public class AddOneRandomItem {
 	@Test(invocationCount = 1, priority = 1, description = "First Test")
 	public void AddOneRandomItemToThecart() throws InterruptedException {
 		Random rand = new Random();
-		int RandomIndex = rand.nextInt(4);
 		driver.get(url);
 		WebElement Container = driver.findElement(By.className("product-items"));
 		List<WebElement> myList = Container.findElements(By.tagName("li"));
+		int RandomIndex = rand.nextInt(myList.size());
+
 		myList.get(RandomIndex).click();
 		Thread.sleep(2000);
 		if (driver.getCurrentUrl().contains("fusion") || driver.getCurrentUrl().contains("push")) {
@@ -50,10 +53,17 @@ public class AddOneRandomItem {
 			theListColors.get(RandomColor).click();
 			WebElement addtoCartbutton = driver.findElement(By.id("product-addtocart-button"));
 			addtoCartbutton.click();
+			Thread.sleep(4000);
+
 		}
+		WebElement Msg = driver
+				.findElement(By.cssSelector("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"));
+		boolean actual = Msg.getText().contains("You added");
+		boolean expected = true;
+		Assert.assertEquals(actual, expected);
 	}
 
-	@Test(priority = 2, description = "Second Test")
+	@Test(priority = 2, description = "Second Test", enabled = false)
 	public void CheckOutProcess() throws InterruptedException {
 		String CheckOutPage = "https://magento.softwaretestingboard.com/checkout/cart/";
 		Thread.sleep(2000);
@@ -62,10 +72,11 @@ public class AddOneRandomItem {
 		proceedButton.click();
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, enabled = false)
 
 	public void SignupProcess() throws InterruptedException {
-		Thread.sleep(1000);
+		String ExpectedMsg = "Thank you you for registering with Main Website Store.";
+		Thread.sleep(4000);
 		WebElement email = driver.findElement(By.id("customer-email"));
 		WebElement firstName = driver.findElement(By.name("firstname"));
 		WebElement lastName = driver.findElement(By.name("lastname"));
@@ -77,7 +88,7 @@ public class AddOneRandomItem {
 		WebElement phoneNumber = driver.findElement(By.name("telephone"));
 		WebElement nextButton = driver.findElement(By.cssSelector(".button.action.continue.primary"));
 
-		email.sendKeys("asma.alabsi2022@gmail.com");
+		email.sendKeys("asma.alabsi2023@gmail.com");
 		firstName.sendKeys("asma");
 		lastName.sendKeys("alabsi");
 		StreetAddress.sendKeys("amman Dabouq");
@@ -88,15 +99,35 @@ public class AddOneRandomItem {
 		phoneNumber.sendKeys("962782931383");
 		nextButton.click();
 
-	Select select = new Select(Country);
-		
+		Select select = new Select(Country);
+
 //		select.selectByValue("CN");
 //		select.selectByIndex(1);
-		select.selectByVisibleText("Italy");
+		select.selectByVisibleText("Jordan");
+		Thread.sleep(4000);
+		WebElement NextButton = driver.findElement(By.cssSelector(".button.action.continue.primary"));
+		NextButton.click();
+		Thread.sleep(4000);
+		WebElement PlaceOrder = driver.findElement(By.cssSelector(".action.primary.checkout"));
+		PlaceOrder.click();
+		Thread.sleep(5000);
+		WebElement CreateAnAccountButton = driver.findElement(
+				By.xpath("//a[@href='https://magento.softwaretestingboard.com/checkout/account/delegateCreate/']"));
+		CreateAnAccountButton.click();
+		Thread.sleep(5000);
+
+		WebElement PasswordButton = driver.findElement(By.id("password"));
+		WebElement ConfirmPassword = driver.findElement(By.id("password-confirmation"));
+		PasswordButton.sendKeys(Password);
+		ConfirmPassword.sendKeys(Password);
+
+		WebElement CreatAnAccountfinal = driver.findElement(By.cssSelector(".action.submit.primary"));
+		CreatAnAccountfinal.click();
+		Thread.sleep(3000);
+		WebElement SuccesfullMsg = driver
+				.findElement(By.cssSelector("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']"));
+		String ActualMsg = SuccesfullMsg.getText();
+		Assert.assertEquals(ActualMsg, ExpectedMsg);
 	}
 
-
- 
-	}
-
-
+}
